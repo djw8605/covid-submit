@@ -14,7 +14,6 @@ request_cpus = 1
 Requirements = HAS_SINGULARITY == TRUE
 
 periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (4 * 3600)
-AccountingGroup = "group_opportunistic.COVID19_FoldingAtHome.dweitzel"
 
 
-queue
+queue 1000
