@@ -14,9 +14,9 @@ def main():
     query_result = schedd.query(constraint = 'Owner =?= "{}" && JobStatus == 1'.format(username), attr_list=["JobStatus"])
     idle_jobs = len(query_result)
 
-    # If less than 4000 idle jobs, submit another 1000.
-    # We should always have from just below 4000 and 5000 idle jobs
-    if idle_jobs < 4000:
+    # If less than 8000 idle jobs, submit another 1000.
+    # We should always have from just below 8000 and 9000 idle jobs
+    if idle_jobs < 8000:
         # Read in the submit file
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
