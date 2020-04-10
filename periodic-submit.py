@@ -16,7 +16,7 @@ def main():
 
     # If less than 1000 idle jobs, submit another 1000.  
     # We should always have from just below 1000 and 2000 idle jobs
-    if idle_jobs < 1000:
+    if idle_jobs < 2000:
         # Read in the submit file
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
