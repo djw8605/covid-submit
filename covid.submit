@@ -5,8 +5,8 @@ universe = vanilla
 +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/lukasheinrich/folding:simple"
 
 executable = run.sh
-output = out.$(CLUSTER)
-error = err.$(CLUSTER)
+output = output/out.$(CLUSTER).$(PROCESS)
+error = error/err.$(CLUSTER).$(PROCESS)
 log = log
 
 should_transfer_files = YES
