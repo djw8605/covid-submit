@@ -1,0 +1,18 @@
+universe = vanilla
+
++ProjectName = "COVID19_FoldingAtHome"
+
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/lukasheinrich/folding:simple"
+
+executable = run.sh
+output = out.$(CLUSTER)
+error = err.$(CLUSTER)
+log = log
+
+should_transfer_files = YES
+request_cpus = 1
+Requirements = HAS_SINGULARITY == TRUE
+
+periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (4 * 3600)
+
+queue
