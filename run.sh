@@ -7,4 +7,4 @@ if [ $# -ne 0 ]; then
 cores=$1
 fi
 
-FAHClient --user=Anonymous --team=258507 --gpu=false --smp=false --cpus=$cores
+FAHClient --user=Anonymous --team=258507 --gpu=false --smp=false --cpus=$cores --exit-when-done=true --max-units=1
