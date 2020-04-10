@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import htcondor
 import getpass
 import os
