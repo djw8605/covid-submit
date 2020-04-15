@@ -15,5 +15,4 @@ Requirements = HAS_SINGULARITY == TRUE
 
 periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600)
 
-
 queue 1000
