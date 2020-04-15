@@ -36,7 +36,7 @@ def main():
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
         os.chdir(os.path.dirname(os.path.realpath(__file__)))
-        subprocess.call("/usr/local/bin/condor_submit covid.submit -append request_cpus=8 -append arguments=8", shell=True)
+        subprocess.call("/usr/local/bin/condor_submit covid.submit -append request_cpus=8 -append arguments=8 --append priority=10", shell=True)
         print("Submitted 1000 eight core jobs")
     else:
         print("More than 1000 idle eight core jobs: {}".format(idle_jobs))
