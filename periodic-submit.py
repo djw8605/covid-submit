@@ -4,19 +4,25 @@ import getpass
 import os
 import subprocess
 
-
+max_total_jobs = 20000
+max_idle_single_core = 8000
+max_idle_eight_core = 2000
 
 def main():
     # Get the number of submitted covid jobs
     # Get my username for the query
     username = getpass.getuser()
     schedd = htcondor.Schedd()
-    single_query_result = schedd.query(constraint = 'Owner =?= "{}" && JobStatus == 1 && RequestCPUs == 1'.format(username), attr_list=["JobStatus"])
-    idle_jobs = len(single_query_result)
+    single_query_result = schedd.query(constraint = 'Owner =?= "{}" && RequestCPUs == 1'.format(username), attr_list=["JobStatus"])
+    total_jobs = len(single_query_result)
+    idle_jobs = 0
+    for job in single_query_result:
+        if job['JobStatus'] == 1:
+            idle_jobs += 1
 
     # If less than 8000 idle jobs, submit another 1000.
     # We should always have from just below 8000 and 9000 idle jobs
-    if idle_jobs < 8000:
+    if idle_jobs < max_idle_single_core and total_jobs < max_total_jobs:
         # Read in the submit file
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
@@ -24,14 +30,18 @@ def main():
         subprocess.call("/usr/local/bin/condor_submit covid.submit", shell=True)
         print("Submitted 1000 single core jobs")
     else:
-        print("More than 1000 idle single core jobs: {}".format(idle_jobs))
+        print("Decided to not submit more jobs: idle_jobs:{}, total_jobs:{}".format(idle_jobs, total_jobs))
 
-    eight_query_result = schedd.query(constraint = 'Owner =?= "{}" && JobStatus == 1 && RequestCPUs == 8'.format(username), attr_list=["JobStatus"])
-    idle_jobs = len(eight_query_result)
+    eight_query_result = schedd.query(constraint = 'Owner =?= "{}" && RequestCPUs == 8'.format(username), attr_list=["JobStatus"])
+    total_jobs = len(eight_query_result)
+    idle_jobs = 0
+    for job in eight_query_result:
+        if job['JobStatus'] == 1:
+            idle_jobs += 1
 
     # If less than 2000 idle jobs, submit another 1000.
     # We should always have from just below 2000 and 3000 idle jobs
-    if idle_jobs < 2000:
+    if idle_jobs < max_idle_eight_core and total_jobs < max_total_jobs:
         # Read in the submit file
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
@@ -39,7 +49,7 @@ def main():
         subprocess.call("/usr/local/bin/condor_submit covid.submit -append request_cpus=8 -append arguments=8 --append priority=10", shell=True)
         print("Submitted 1000 eight core jobs")
     else:
-        print("More than 1000 idle eight core jobs: {}".format(idle_jobs))
+        print("Decided to not submit more eight core jobs: idle_jobs:{}, total_jobs:{}".format(idle_jobs, total_jobs))
     
 
     
