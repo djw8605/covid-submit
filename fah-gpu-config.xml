@@ -1,0 +1,9 @@
+<config>
+  <!-- Configuration file created by FAHClient on 2020-08-10T14:18:02Z -->
+  <user value='Anonymous'/>
+  <team value='258507'/>
+  <passkey value=''/>
+  <smp value='true'/>
+  <gpu value='true'/>
+  <slot id='0' type='GPU'/>
+</config>
