@@ -66,7 +66,7 @@ def main():
         # Have to use the condor_submit interface because of scitokens and wrapper stuff
         submit_file = ""
         os.chdir(os.path.dirname(os.path.realpath(__file__)))
-        subprocess.call("/usr/local/bin/condor_submit covid.submit.gpu--append priority=10", shell=True)
+        subprocess.call("/usr/local/bin/condor_submit covid.submit.gpu --append priority=10", shell=True)
         print("Submitted 1000 gpu jobs")
     else:
         print("Decided to not submit more gpu jobs: idle_jobs:{}, total_jobs:{}".format(idle_jobs, total_jobs))
