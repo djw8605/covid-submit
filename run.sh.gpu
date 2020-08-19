@@ -24,6 +24,6 @@ nvidia-smi
 cp fah-gpu-config.xml config.xml
 
 tar xzf FAHClient.tar.gz
-./FAHClient --exit-when-done=true --max-units=1
+./FAHClient --exit-when-done=true --max-units=1 --cause=covid-19
 
 rm config.xml
