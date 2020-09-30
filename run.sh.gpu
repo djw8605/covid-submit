@@ -27,3 +27,4 @@ tar xzf FAHClient.tar.gz
 ./FAHClient --exit-when-done=true --max-units=1 --cause=covid-19
 
 rm config.xml
+rm *_64
