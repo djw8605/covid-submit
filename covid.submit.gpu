@@ -1,0 +1,25 @@
+universe = vanilla
+
++ProjectName = "COVID19_FoldingAtHome"
+
+#+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/opensciencegrid/tensorflow-gpu:latest"
+
+#transfer_input_files = FAHClient.tar.gz, fah-gpu-config.xml
+transfer_input_files = debian-client/FAHClient.tar.gz, fah-gpu-config.xml, new-submit/GPUs.txt
+
+executable = run.sh.gpu
+output = output/out.$(CLUSTER).$(PROCESS)
+error = error/err.$(CLUSTER).$(PROCESS)
+log = log.gpu
+
+should_transfer_files = YES
+request_cpus = 1
+request_gpus = 1
+request_disk = 1GB
+request_memory = 1GB
+#Requirements = HAS_SINGULARITY == TRUE
+#Requirements = HAS_SINGULARITY == TRUE && OSG_GLIDEIN_VERSION >= 495
+
+periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600)
+
+queue 1000
