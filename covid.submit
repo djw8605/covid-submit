@@ -11,8 +11,8 @@ log = log
 
 should_transfer_files = YES
 request_cpus = 1
-request_disk = 1GB
-request_memory = 1GB
+request_memory = 1.5GB
+request_disk = 200MB
 Requirements = HAS_SINGULARITY == TRUE
 
 periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600) && ((time() + + (38*60*60)) < GLIDEIN_ToDie)
