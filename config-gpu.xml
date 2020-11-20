@@ -1,0 +1,4 @@
+<config>
+  <auto-conf v="false"/>
+  <slot id='0' type="GPU"/>
+</config>
