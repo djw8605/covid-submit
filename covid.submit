@@ -2,7 +2,10 @@ universe = vanilla
 
 +ProjectName = "COVID19_FoldingAtHome"
 
-+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/lukasheinrich/folding:simple"
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/foldingathome/fah-gpu:latest"
+
+# Only needed for GPU jobs
+#transfer_input_files = config-gpu.xml
 
 executable = run.sh
 output = output/out.$(CLUSTER).$(PROCESS)
@@ -11,10 +14,9 @@ log = log
 
 should_transfer_files = YES
 request_cpus = 1
-request_memory = 1.5GB
+request_memory = 2GB
 request_disk = 200MB
-Requirements = HAS_SINGULARITY == TRUE
-
+Requirements = HAS_SINGULARITY == TRUE && OSG_HOST_KERNEL_VERSION >= 31000
+ 
 periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600) && ((time() + + (38*60*60)) < GLIDEIN_ToDie)
-
 queue 1000

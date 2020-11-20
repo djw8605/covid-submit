@@ -9,4 +9,8 @@ cores=$1
 smp=true
 fi
 
-FAHClient --user=Anonymous --team=258507 --gpu=false --smp=$smp --cpus=$cores --exit-when-done=true --max-units=1 --cause=covid-19
+
+
+FAHClient --user=Anonymous --team=258507 --gpu=true --smp=$smp --cpus=$cores --exit-when-done=true --max-units=1 --cause=covid-19
+
+
