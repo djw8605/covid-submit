@@ -14,7 +14,7 @@ log = log
 
 should_transfer_files = YES
 request_cpus = 1
-request_memory = 2GB
+request_memory = 1950MB
 request_disk = 200MB
 Requirements = HAS_SINGULARITY == TRUE && OSG_HOST_KERNEL_VERSION >= 31000
  
