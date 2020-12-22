@@ -5,7 +5,7 @@ universe = vanilla
 +SingularityImage = "/cvmfs/singularity.opensciencegrid.org/foldingathome/fah-gpu:latest"
 
 transfer_input_files = config-gpu.xml
-executable = run.sh
+executable = run.sh.gpu
 output = output/out.$(CLUSTER).$(PROCESS)
 error = error/err.$(CLUSTER).$(PROCESS)
 log = log
