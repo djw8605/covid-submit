@@ -2,7 +2,7 @@ universe = vanilla
 
 +ProjectName = "COVID19_FoldingAtHome"
 
-+SingularityImage = "/cvmfs/singularity.opensciencegrid.org/foldingathome/fah-gpu:latest"
++SingularityImage = "/cvmfs/singularity.opensciencegrid.org/djw8605/fah-gpu:latest"
 
 # Only needed for GPU jobs
 #transfer_input_files = config-gpu.xml
