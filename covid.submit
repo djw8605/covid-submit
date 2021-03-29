@@ -16,7 +16,7 @@ should_transfer_files = YES
 request_cpus = 1
 request_memory = 1950MB
 request_disk = 200MB
-Requirements = HAS_SINGULARITY == TRUE && OSG_HOST_KERNEL_VERSION >= 31000
+Requirements = HAS_SINGULARITY == TRUE && OSG_HOST_KERNEL_VERSION >= 31000 && ((time() + (38*60*60)) < GLIDEIN_ToDie)
  
-periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600) && ((time() + + (38*60*60)) < GLIDEIN_ToDie)
+periodic_remove = (JobStatus == 2) && (time() - EnteredCurrentStatus) > (40 * 3600)
 queue 1000
